@@ -10,9 +10,7 @@ How to use HeuDiConv (Heuristic DICOM Converter) to transform raw DICOM data int
 
 #FIRST STEP: Create heuristic file (see convertKeys.py)
 
-# ONLY after having created our heuristic file, use dcm2niix to transform
-# the dicom files to nifti, using BIDS formatting.
-# Copy the following code and paste it in a terminal:
+Copy the following code and paste it in a terminal:
 
 docker run --rm -it \
 -v ~/../../../d/UGentData/fMRI/dicom:/data:ro \
@@ -24,7 +22,10 @@ nipy/heudiconv:latest \
 -c none \
 -o /output
 
-At this point, delent the .heudiconv file
+This will create a .heudiconv folder with a file called "convertall.py". You will have to adapt this file to the specifics of your study (see convert_retro.py file for an example).
+
+At this point, move your new heuristic file to your script folder and delete the .heudiconv folder
+
 # Run the transformation with our heuristic file
 for subject in {01..05}; do
 	docker run --rm -it \
@@ -33,7 +34,7 @@ for subject in {01..05}; do
 	nipy/heudiconv:latest \
 	-d /data/{subject}/*/*/*.IMA \
 	-s ${subject} \
-	-f /data/scripts/convert_heuristic.py \
+	-f /data/scripts/convert_retro.py \
 	-c dcm2niix -b \
 	-o /output \
 	--minmeta
