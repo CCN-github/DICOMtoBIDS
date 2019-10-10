@@ -1,14 +1,14 @@
 # DICOMtoBIDS
 How to use HeuDiConv (Heuristic DICOM Converter) to transform raw DICOM data into a BIDS dataset
 
-# documentation and tutorials
+# Documentation and tutorials
 https://github.com/nipy/heudiconv
 http://nipy.org/heudiconv/#10
 https://www.youtube.com/watch?v=O1kZAuR7E00
 
 *This how-to is adapted to use with docker (http://docker.com)
 
-#FIRST STEP: Create heuristic file (see convertKeys.py)
+# FIRST STEP: Create heuristic file (see convertKeys.py)
 
 Copy the following code and paste it in a terminal:
 
